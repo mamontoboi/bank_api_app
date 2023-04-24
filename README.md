@@ -17,6 +17,7 @@ http://localhost:8000/api/v1/average/usd/2023-03-01/
 E.g. the above query returns `{"average rate": 4.4094}`
 
 
+
 2. `http://localhost:8000/api/v1/minimax/<currency code>/<number of records>/`
 
 This function takes a currency code and a number of records as arguments and returns the minimum and maximum average exchange rates for the requested period. The maximum number of records is 255, and the minimum is 1.
@@ -28,6 +29,7 @@ http://localhost:8000/api/v1/minimax/usd/255/
 The above query returns `{"minimum average value": 4.1905, "maximum average value": 5.0381}`
 
 
+
 3. `http://localhost:8000/api/v1/diff/<currency code>/<number of records>/`
 
 This function takes a currency code and a number of records as arguments and returns the bid-ask spread for the requested period. The maximum number of records is 255, and the minimum is 1.
@@ -37,6 +39,7 @@ Example query:
 http://localhost:8000/api/v1/diff/usd/60/
 ```
 This query returns `{"major difference": 0.09}`
+
 
 
 4. `http://localhost:8000/api/v1/codes/`
@@ -52,7 +55,7 @@ This function returns a list of currency codes supported by the bank.
 #### Create and activate a virtual environment
 
 - `make venv`
-OR
+or
 - `python3 -m venv venv && source venv/bin/activate`
 
 
