@@ -112,7 +112,7 @@ or
 
 
 
-## Setup of the project on Windows
+## Setup of the project without Docker
 
 
 #### Create and activate a virtual environment on Windows
