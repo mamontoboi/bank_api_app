@@ -6,34 +6,41 @@ A simple server, that queries the data from the Narodowy Bank Polski's public AP
 ## Endpoints
 
 
-`http://localhost:8000/api/v1/average/<currency code>/<date>/` 
+1. `http://localhost:8000/api/v1/average/<currency code>/<date>/` 
+
 This function takes a date (YYYY-MM-DD) and a currency code as arguments and returns the average exchange rate for the given date. Note that the bank does not provide data for weekends or holidays.
+
+Example query:
 ```
 http://localhost:8000/api/v1/average/usd/2023-03-01/
 ```
 E.g. the above query returns `{"average rate": 4.4094}`
 
 
+2. `http://localhost:8000/api/v1/minimax/<currency code>/<number of records>/`
 
-`http://localhost:8000/api/v1/minimax/<currency code>/<number of records>/`
 This function takes a currency code and a number of records as arguments and returns the minimum and maximum average exchange rates for the requested period. The maximum number of records is 255, and the minimum is 1.
+
+Example query:
 ```
 http://localhost:8000/api/v1/minimax/usd/255/
 ```
 The above query returns `{"minimum average value": 4.1905, "maximum average value": 5.0381}`
 
 
+3. `http://localhost:8000/api/v1/diff/<currency code>/<number of records>/`
 
-`http://localhost:8000/api/v1/diff/<currency code>/<number of records>/`
 This function takes a currency code and a number of records as arguments and returns the bid-ask spread for the requested period. The maximum number of records is 255, and the minimum is 1.
+
+Example query:
 ```
 http://localhost:8000/api/v1/diff/usd/60/
 ```
 This query returns `{"major difference": 0.09}`
 
 
+4. `http://localhost:8000/api/v1/codes/`
 
-`http://localhost:8000/api/v1/codes/`
 This function returns a list of currency codes supported by the bank.
 
 
