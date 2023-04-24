@@ -30,8 +30,8 @@ def rate_per_date(request, code, date):
         data = fetch_data(f"http://api.nbp.pl/api/exchangerates/rates/a/{code}/{date}/?format=json")
         avg_rate = data['rates'][0]['mid']
     except json.decoder.JSONDecodeError:
-        return Response({"Error": "Unfortunately, NBP do not "
-                                  "provide data for weekends or holidays."})
+        return Response({"Error": "Unfortunately, NBP does not "
+                                  "provide the data for weekends or holidays."})
     return Response({"average rate": avg_rate})
 
 

@@ -1,16 +1,10 @@
 # Phony targets
-.PHONY: venv migrate image delete_image container restart_cont stop_cont delete_cont shell test status purge
+.PHONY: venv image delete_image container migrate stop_cont restart_cont delete_cont shell test status purge
 
 
 # Create and activate virtual environment
 venv:
 	python3 -m venv venv && source venv/bin/activate
-
-
-# Make all migrations
-migrate:
-	docker exec -it nbp_cont python nbp_api/manage.py makemigrations
-	docker exec -it nbp_cont python nbp_api/manage.py migrate
 
 
 # Build the Docker image
@@ -28,14 +22,20 @@ container:
 	docker run --name nbp_cont -dp 8000:8000 nbp
 
 
-# Restart the Docker container
-restart_cont:
-	docker start nbp_cont
+# Make all migrations
+migrate:
+	docker exec -it nbp_cont python nbp_api/manage.py makemigrations
+	docker exec -it nbp_cont python nbp_api/manage.py migrate
 
 
 # Stop the Docker container
 stop_cont:
 	docker stop nbp_cont
+
+
+# Restart the Docker container
+restart_cont:
+	docker start nbp_cont
 
 
 # Delete the Docker container
