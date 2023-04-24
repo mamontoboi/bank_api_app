@@ -55,7 +55,7 @@ class APIRouteTest(APITestCase):
         response = self.client.get('/api/v1/average/usd/2023-04-16/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"Error": "Unfortunately, "
-                                                    "NBP do not provide data for weekends or holidays."})
+                                                    "NBP does not provide the data for weekends or holidays."})
 
 
 class FunctionsTest(TestCase):

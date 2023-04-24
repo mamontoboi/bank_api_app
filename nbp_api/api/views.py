@@ -10,7 +10,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 
-# http://localhost:8000/api/avg/usd/2023-03-01/
+# http://localhost:8000/api/v1/average/usd/2023-03-01/
 @api_view(['GET'])
 def rate_per_date(request, code, date):
     """The rate_per_date view receives a GET request with two
@@ -35,7 +35,7 @@ def rate_per_date(request, code, date):
     return Response({"average rate": avg_rate})
 
 
-# http://localhost:8000/api/minimax/usd/255/
+# http://localhost:8000/api/v1/minimax/usd/255/
 @api_view(['GET'])
 def minimax_per_period(request, code, number):
     """The minimax_per_period view receives a GET request with
@@ -59,7 +59,7 @@ def minimax_per_period(request, code, number):
                               "lease, try again later."})
 
 
-# http://localhost:8000/api/diff/usd/60/
+# http://localhost:8000/api/v1/diff/usd/60/
 @api_view(['GET'])
 def biggest_diff(request, code, number):
     """The biggest_diff view retrieves the major difference between the highest
