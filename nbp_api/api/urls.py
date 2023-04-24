@@ -3,7 +3,7 @@ from . import views
 
 
 urlpatterns = [
-    path('avg/<str:code>/<str:date>/', views.rate_per_date),
+    path('average/<str:code>/<str:date>/', views.rate_per_date),
     path('minimax/<str:code>/<int:number>/', views.minimax_per_period),
     path('diff/<str:code>/<int:number>/', views.biggest_diff),
     path('codes/', views.available_codes),

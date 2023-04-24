@@ -12,7 +12,7 @@ class APIRouteTest(APITestCase):
     """The class verifies the correctness of the application's API calls."""
 
     def test_available_codes_pass(self):
-        response = self.client.get('/api/codes/')
+        response = self.client.get('/api/v1/codes/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"codes": LIST_OF_CODES})
 
@@ -24,7 +24,7 @@ class APIRouteTest(APITestCase):
         ]
     })
     def test_biggest_diff_pass(self, mock_fetch_data):
-        response = self.client.get('/api/diff/usd/3/')
+        response = self.client.get('/api/v1/diff/usd/3/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {'major difference': 0.4})
 
@@ -36,7 +36,7 @@ class APIRouteTest(APITestCase):
         ]
     })
     def test_minimax_per_period_pass(self, mock_fetch_data):
-        response = self.client.get('/api/minimax/usd/3/')
+        response = self.client.get('/api/v1/minimax/usd/3/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"minimum average value": 4.0,
                                            "maximum average value": 4.2})
@@ -47,12 +47,12 @@ class APIRouteTest(APITestCase):
         ]
     })
     def test_rate_per_day_pass(self, mock_fetch_data):
-        response = self.client.get('/api/avg/usd/2023-03-01/')
+        response = self.client.get('/api/v1/average/usd/2023-03-01/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"average rate": 4.0})
 
     def test_rate_per_day_fail(self):
-        response = self.client.get('/api/avg/usd/2023-04-16/')
+        response = self.client.get('/api/v1/average/usd/2023-04-16/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"Error": "Unfortunately, "
                                                     "NBP do not provide data for weekends or holidays."})
